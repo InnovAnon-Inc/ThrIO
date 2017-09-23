@@ -25,11 +25,6 @@ static void *io_thread_cb (void *restrict _arg) {
    return NULL;
 }
 
-TODO (this macro has been moved to glitter.h)
-#ifndef min
-#define min(A, B) ((A) < (B) ? (A) : (B))
-#endif
-
 typedef struct {
    io_t *restrict io;
    thrio_cb_t cb;
