@@ -10,3 +10,6 @@
 [submodule "tscpaq"]
 	path = tscpaq
 	url = https://github.com/InnovAnon-Inc/tscpaq.git
+[submodule "ThIpe"]
+	path = ThIpe
+	url = https://github.com/InnovAnon-Inc/ThIpe.git
