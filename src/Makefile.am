@@ -17,7 +17,6 @@ LIBTHRIO_LIBADD = ../ThIpe/src/.libs/libthipe.la $(LIBTHRIO_LIBADD)
 
 lib_LTLIBRARIES = libthrio.la
 include_HEADERS = thrio.h
-libthrio_la_LIBADD = $(LIBTHRIO_LIBADD)
-
 bin_PROGRAMS = thrio-test
+libthrio_la_LIBADD = $(LIBTHRIO_LIBADD)
 thrio_test_LDADD = libthrio.la $(LIBTHRIO_LIBADD)
