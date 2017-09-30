@@ -12,8 +12,9 @@ AM_CPPFLAGS += -I $(top_srcdir)/TSCPAQ/src
 SUBDIRS += ../ThIpe
 AM_CPPFLAGS += -I $(top_srcdir)/ThIpe/src
 
-LIBTHRIO_LIBADD = ../ThIpe/src/.libs/libthipe.la $(LIBTHIPE_LIBADD)
-#LIBTHRIO_LIBADD += -lrestart -ltscpaq -lcpaq -lpthread
+include Makefile-LIBADD.inc
+#LIBTHRIO_LIBADD = ../ThIpe/src/.libs/libthipe.la $(LIBTHIPE_LIBADD)
+##LIBTHRIO_LIBADD += -lrestart -ltscpaq -lcpaq -lpthread
 
 lib_LTLIBRARIES = libthrio.la
 include_HEADERS = thrio.h
