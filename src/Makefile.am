@@ -19,6 +19,4 @@ lib_LTLIBRARIES = libthrio.la
 include_HEADERS = thrio.h
 bin_PROGRAMS = thrio-test
 libthrio_la_LIBADD = $(LIBTHRIO_LIBADD)
-# TODO wtf?
-thrio_test_SOURCES = thrio-test.c
 thrio_test_LDADD = libthrio.la $(LIBTHRIO_LIBADD)
