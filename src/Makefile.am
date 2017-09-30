@@ -1,14 +1,23 @@
-lib_LTLIBRARIES = libthrio.la
-libthrio_la_SOURCES = thrio.c
-include_HEADERS = thrio.h
-libthrio_la_LIBADD = -lthipe -lrestart -ltscpaq -lcpaq -lpthread
+LIBTHRIO_LIBADD = ../ThIpe/src/.libs/libthipe.la $(LIBTHRIO_LIBADD)
+#LIBTHRIO_LIBADD += -lrestart -ltscpaq -lcpaq -lpthread
 
-bin_PROGRAMS = thrio
-thrio_SOURCES = main.c
-thrio_LDADD = libthrio.la -lthipe -lrestart -ltscpaq -lcpaq -lpthread
+lib_LTLIBRARIES = libthrio.la
+include_HEADERS = thrio.h
+libthrio_la_LIBADD = $(LIBTHRIO_LIBADD)
+
+bin_PROGRAMS = thrio-test
+thrio_test_LDADD = libthrio.la $(LIBTHRIO_LIBADD)
 
 AM_CPPFLAGS = -D__STDC_INT64__
-AM_CPPFLAGS += -I $(srcdir)/../glitter/src
-AM_CPPFLAGS += -I $(srcdir)/../restart/src
-AM_CPPFLAGS += -I $(srcdir)/../TSCPAQ/src
-AM_CPPFLAGS += -I $(srcdir)/../ThIpe/src
+
+SUBDIRS = ../glitter
+AM_CPPFLAGS += -I ../glitter/src
+
+SUBDIRS += ../restart
+AM_CPPFLAGS += -I ../restart/src
+
+SUBDIRS += ../TSCPAQ
+AM_CPPFLAGS += -I ../TSCPAQ/src
+
+SUBDIRS += ../ThIpe
+AM_CPPFLAGS += -I ../ThIpe/src
