@@ -6,6 +6,9 @@
 #define __STDC_VERSION__ 200112L
 
 #include <signal.h>
+#ifndef NDEBUG
+#include <stdio.h>
+#endif
 #include <strings.h>
 
 #include <pthread.h>
@@ -22,7 +25,18 @@ typedef struct {
 __attribute__ ((nonnull (1), nothrow, warn_unused_result))
 static void *io_thread_cb (void *restrict _arg) {
    io_thread_cb_t *restrict arg = (io_thread_cb_t *restrict) _arg;
-   error_check (rw_io (arg->io, arg->in, arg->out) != 0) return NULL;
+#ifndef NDEBUG
+   fprintf (stderr, "io_thread_cb (): enter\n");
+#endif
+   error_check (rw_io (arg->io, arg->in, arg->out) != 0) {
+#ifndef NDEBUG
+      fprintf (stderr, "io_thread_cb (): error\n");
+#endif
+       return NULL;
+   }
+#ifndef NDEBUG
+   fprintf (stderr, "io_thread_cb (): exit\n");
+#endif
    return NULL;
 }
 
@@ -50,8 +64,18 @@ static void *worker_thread_cb (void *restrict _arg) {
    /*io_t *restrict arg = (io_t *restrict) _arg;*/
    worker_thread_cb_t *restrict arg =
       (worker_thread_cb_t *restrict) _arg;
-   error_check (worker_io (arg->io, worker_thread_cb_cb, &(arg->cb)) != 0)
+#ifndef NDEBUG
+   fprintf (stderr, "worker_thread_cb (): enter\n");
+#endif
+   error_check (worker_io (arg->io, worker_thread_cb_cb, &(arg->cb)) != 0) {
+#ifndef NDEBUG
+      fprintf (stderr, "worker_thread_cb (): error\n");
+#endif
       return NULL;
+   }
+#ifndef NDEBUG
+   fprintf (stderr, "worker_thread_cb (): exit\n");
+#endif
    return NULL;
 }
 
