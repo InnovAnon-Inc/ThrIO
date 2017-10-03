@@ -84,6 +84,7 @@ int thrio (
    worker_thread_cb_arg.cb = cb;
    error_check (pthread_create (&worker_thread, NULL, worker_thread_cb, /*&src*/ /*&dest*/ &worker_thread_cb_arg) != 0) {
       TODO (kill io thread)
+      pthread_kill (&io_thread, 0);
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
       (void) free_io (&dest);
@@ -93,6 +94,7 @@ int thrio (
 
    error_check (pthread_join (io_thread, NULL) != 0) {
       TODO (kill worker thread)
+      pthread_kill (&worker_thread, 0);
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
       (void) free_io (&dest);
