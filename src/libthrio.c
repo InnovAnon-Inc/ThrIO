@@ -108,7 +108,6 @@ int thrio (
    worker_thread_cb_arg.io = &dest;
    worker_thread_cb_arg.cb = cb;
    error_check (pthread_create (&worker_thread, NULL, worker_thread_cb, /*&src*/ /*&dest*/ &worker_thread_cb_arg) != 0) {
-      TODO (kill io thread)
       pthread_kill (io_thread, 0);
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
@@ -118,7 +117,6 @@ int thrio (
    }
 
    error_check (pthread_join (io_thread, NULL) != 0) {
-      TODO (kill worker thread)
       pthread_kill (worker_thread, 0);
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
@@ -126,6 +124,10 @@ int thrio (
 	#pragma GCC diagnostic pop
       return -4;
    }
+   TODO (pretty sure the worker thread hangs and waits for input which never comes and therefore never terminates)
+   TODO (we can send a sentinel through the pipe)
+   TODO (or we can add a mutexed bool to flag whether it is time to stop)
+   TODO (or we could kill the worker and risk losing data)
    error_check (pthread_join (worker_thread, NULL) != 0) {
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
