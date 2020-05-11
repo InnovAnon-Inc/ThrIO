@@ -7,6 +7,3 @@
 [submodule "ThIpe"]
 	path = ThIpe
 	url = https://github.com/InnovAnon-Inc/ThIpe.git
-[submodule "swap"]
-	path = swap
-	url = https://github.com/InnovAnon-Inc/swap.git
