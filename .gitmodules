@@ -13,9 +13,6 @@
 [submodule "TSCPAQ"]
 	path = TSCPAQ
 	url = https://github.com/InnovAnon-Inc/TSCPAQ.git
-[submodule "CPAQ"]
-	path = CPAQ
-	url = https://github.com/InnovAnon-Inc/CPAQ.git
 [submodule "PArray"]
 	path = PArray
 	url = https://github.com/InnovAnon-Inc/PArray.git
