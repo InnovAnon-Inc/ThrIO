@@ -4,6 +4,3 @@
 [submodule "restart"]
 	path = restart
 	url = https://github.com/InnovAnon-Inc/restart.git
-[submodule "ThIpe"]
-	path = ThIpe
-	url = https://github.com/InnovAnon-Inc/ThIpe.git
