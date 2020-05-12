@@ -26,10 +26,11 @@ AC_CHECK_LIB([tscpaq],[tscpaq_alloc_queue,tscpaq_free_queue])
 AC_CHECK_LIB([tscpaq],[tscpaq_enqueue,tscpaq_dequeue])
 AC_CHECK_LIB([thipe],[alloc_io,free_io])
 
-LIBTHRIO_LIBADD="`PATH=src:$PATH libthrio_config --libs`"
+srcdir = @srcdir@
+LIBTHRIO_LIBADD="`PATH=$(srcdir)src:$PATH libthrio_config --libs`"
 AC_SUBST(LIBTHRIO_LIBADD)
 
-THRIO_TEST_LIBADD="libthrio.la `PATH=src:$PATH thrio_test_config --libs`"
+THRIO_TEST_LIBADD="`PATH=$(srcdir)src:$PATH thrio_test_config --libs`"
 AC_SUBST(THRIO_TEST_LIBADD)
 
 INNOVANON_WARNINGS([])
