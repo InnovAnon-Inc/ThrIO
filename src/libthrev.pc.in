@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+#thrio_utility=thrio-test
+
+Name: @PACKAGE_NAME@
+Description: thrio library
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lthrio
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private: libio
+
