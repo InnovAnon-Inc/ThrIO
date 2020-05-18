@@ -12,4 +12,5 @@ Libs: -L${libdir} -lthrio
 Cflags: -I${includedir}
 Requires: glitter
 Requires.private: libio
+Libs.private: -lpthread
 
